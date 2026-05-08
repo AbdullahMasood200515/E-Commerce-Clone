@@ -1,0 +1,9 @@
+{
+  "admins": [
+    {
+      "email": "admin@shopara.com",
+      "password": "adminpassword",
+      "username": "Admin"
+    }
+  ]
+}

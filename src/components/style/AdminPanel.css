@@ -1,0 +1,243 @@
+.admin-page {
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 1000px) {
+    .admin-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f1f5f9;
+}
+
+.admin-card h3 {
+    margin: 0 0 20px;
+    font-size: 1.25rem;
+    color: #1e293b;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+}
+
+.price-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.admin-form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cancel-btn {
+    padding: 10px;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 8px;
+    color: #475569;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #e2e8f0;
+}
+
+/* Table Styles */
+.products-table-container {
+    overflow-x: auto;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.products-table th {
+    text-align: left;
+    padding: 12px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.products-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.admin-prod-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f1f5f9;
+}
+
+.admin-prod-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #334155;
+    margin: 0;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cat-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.cat-badge.women { background: #fdf2f8; color: #db2777; }
+.cat-badge.men { background: #eff6ff; color: #2563eb; }
+.cat-badge.kid { background: #f0fdf4; color: #16a34a; }
+
+.admin-prod-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-prod-price .new {
+    font-weight: 700;
+    color: #f97316;
+}
+
+.admin-prod-price .old {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn {
+    background: #f0f9ff;
+    color: #0284c7;
+}
+
+.edit-btn:hover {
+    background: #e0f2fe;
+}
+
+.delete-btn {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.delete-btn:hover {
+    background: #fee2e2;
+}
+
+@media (max-width: 600px) {
+    .admin-container {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .admin-card {
+        padding: 16px;
+    }
+
+    .price-group {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Transform table to cards */
+    .products-table thead {
+        display: none; /* Hide headers */
+    }
+
+    .products-table, .products-table tbody, .products-table tr, .products-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .products-table tr {
+        margin-bottom: 20px;
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .products-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #edf2f7;
+        padding: 8px 0;
+        text-align: right;
+    }
+
+    .products-table td:last-child {
+        border-bottom: none;
+    }
+
+    .products-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        float: left;
+    }
+
+    .admin-prod-img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0;
+    }
+
+    .admin-prod-name {
+        max-width: 200px;
+        white-space: normal;
+        text-align: right;
+    }
+
+    .admin-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
