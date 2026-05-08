@@ -116,9 +116,20 @@
     text-transform: capitalize;
 }
 
-.cat-badge.women { background: #fdf2f8; color: #db2777; }
-.cat-badge.men { background: #eff6ff; color: #2563eb; }
-.cat-badge.kid { background: #f0fdf4; color: #16a34a; }
+.cat-badge.women {
+    background: #fdf2f8;
+    color: #db2777;
+}
+
+.cat-badge.men {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.cat-badge.kid {
+    background: #f0fdf4;
+    color: #16a34a;
+}
 
 .admin-prod-price {
     display: flex;
@@ -141,7 +152,8 @@
     gap: 8px;
 }
 
-.edit-btn, .delete-btn {
+.edit-btn,
+.delete-btn {
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.8rem;
@@ -169,7 +181,11 @@
     background: #fee2e2;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+    .admin-container {
+        grid-template-columns: 1fr;
+    }
+
     .admin-container {
         margin: 20px auto;
         padding: 0 10px;
@@ -186,10 +202,14 @@
 
     /* Transform table to cards */
     .products-table thead {
-        display: none; /* Hide headers */
+        display: none;
+        /* Hide headers */
     }
 
-    .products-table, .products-table tbody, .products-table tr, .products-table td {
+    .products-table,
+    .products-table tbody,
+    .products-table tr,
+    .products-table td {
         display: block;
         width: 100%;
     }
