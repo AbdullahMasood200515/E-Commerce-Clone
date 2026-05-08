@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useProducts } from "../../../context/ProductContext";
 import ProductCard from "../ProductCard/ProductCard";
+import Pagination from "../Pagination/Pagination";
 import "./ProductList.css";
 
 const ProductList = React.memo(function ProductList({ cartItems, onProductClick, onAddToCart, onRemoveFromCart }) {
     const { products } = useProducts();
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    // Pagination Logic
+    const totalPages = Math.ceil(products.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
         <section className="product-list-section">
@@ -12,7 +21,7 @@ const ProductList = React.memo(function ProductList({ cartItems, onProductClick,
             <p className="product-list-subtitle">Browse our latest collection</p>
 
             <div className="product-grid">
-                {products.map((product) => (
+                {currentProducts.map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}
@@ -23,6 +32,12 @@ const ProductList = React.memo(function ProductList({ cartItems, onProductClick,
                     />
                 ))}
             </div>
+
+            <Pagination 
+                currentPage={currentPage} 
+                totalPages={totalPages} 
+                onPageChange={setCurrentPage} 
+            />
         </section>
     )
 });

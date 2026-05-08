@@ -4,11 +4,21 @@ import Navbar from "../components/ui/Navbar/Navbar";
 import Inputs from "../components/ui/Inputs/Inputs";
 import Buttons from "../components/ui/Buttons/Buttons";
 import Forms from "../components/ui/Forms/Forms";
+import Pagination from "../components/ui/Pagination/Pagination";
 import "../components/style/AdminPanel.css";
 
 function AdminPanel() {
     const { products, addProduct, updateProduct, deleteProduct } = useProducts();
     const [isEditing, setIsEditing] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+    // Pagination Logic
+    const totalPages = Math.ceil(products.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
+
     const [formData, setFormData] = useState({
         name: "",
         category: "",
@@ -164,7 +174,7 @@ function AdminPanel() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map((product) => (
+                                    {currentProducts.map((product) => (
                                         <tr key={product.id}>
                                             <td data-label="Image">
                                                 <img src={product.image} alt={product.name} className="admin-prod-img" />
@@ -188,6 +198,11 @@ function AdminPanel() {
                                 </tbody>
                             </table>
                         </div>
+                        <Pagination 
+                            currentPage={currentPage} 
+                            totalPages={totalPages} 
+                            onPageChange={setCurrentPage} 
+                        />
                     </div>
                 </div>
             </div>
